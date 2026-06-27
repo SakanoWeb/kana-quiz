@@ -30,7 +30,9 @@ export function translate(
   key: MessageKey,
   params?: Readonly<Record<string, string | number>>,
 ): string {
-  const template = CATALOG[locale][key];
+  // Cast through unknown: the type says string, but a missing key at runtime
+  // (e.g. stale localStorage, partial catalog) could still produce undefined.
+  const template = CATALOG[locale][key] as string | undefined;
   if (template === undefined) {
     if (import.meta.env.DEV) console.warn(`[i18n] missing key "${key}" for locale "${locale}"`);
     return key;

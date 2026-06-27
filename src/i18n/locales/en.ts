@@ -150,5 +150,12 @@ export const en = {
   'kanji.close': 'Close',
 } as const;
 
-export type Messages = typeof en;
-export type MessageKey = keyof Messages;
+/** Union of all valid message keys (derived from the English source-of-truth). */
+export type MessageKey = keyof typeof en;
+
+/**
+ * Shape that every locale catalog must satisfy: the same keys as English, each
+ * mapped to an arbitrary string (so translated values are not constrained to
+ * match the English literals).
+ */
+export type Messages = Record<MessageKey, string>;
