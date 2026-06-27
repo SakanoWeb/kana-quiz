@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      Content-Security-Policy as a meta tag.
+      GitHub Pages cannot send custom HTTP headers, so this is the only way to
+      apply a CSP in production. The app is fully self-contained (it loads no
+      third-party scripts, fonts or data at runtime), so the policy can be tight:
+        - script-src 'self'      -> only our own bundled JS.
+        - connect-src 'self' ws  -> 'self' in prod; ws/wss allow Vite HMR in dev;
+          cdn.jsdelivr.net serves the read-only kanji dataset (English) loaded by
+          the browse view at runtime.
+        - style-src 'unsafe-inline' -> needed for injected styles; can be tightened
+          with hashes later (see SECURITY.md).
+        - object/frame-ancestors -> block embedding and clickjacking.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-ancestors 'none';
+        img-src 'self' data:;
+        font-src 'self';
+        style-src 'self' 'unsafe-inline';
+        script-src 'self';
+        connect-src 'self' ws: wss: https://cdn.jsdelivr.net;
+        form-action 'none';
+      "
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Practice Japanese: hiragana, katakana and kanji with configurable pools and quiz modes."
+    />
+
+    <title>Kana Quiz</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

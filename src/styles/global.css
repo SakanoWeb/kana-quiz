@@ -1,0 +1,84 @@
+:root {
+  /* Palette: Japanese paper + ink + a vermilion accent (朱色). Deliberately
+     restrained. No purple gradients, no generic look. */
+  --paper: #f4f1ea;
+  --paper-raised: #fbfaf6;
+  --ink: #1c1a17;
+  --ink-soft: #5a554c;
+  --ink-faint: #8c867a;
+  --line: #d9d3c6;
+  --vermilion: #c1432e;
+  --vermilion-soft: #e8d6cf;
+  --green: #4f7a52;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(28, 26, 23, 0.06), 0 8px 24px rgba(28, 26, 23, 0.05);
+
+  /* Type: a serif display with character, a neutral system sans for body
+     (no external CDNs, consistent with the strict CSP). */
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Hiragino Mincho ProN', Palatino,
+    'Songti SC', serif;
+  --font-body: ui-sans-serif, -apple-system, 'Segoe UI', 'Helvetica Neue', 'Hiragino Kaku Gothic ProN',
+    'Yu Gothic', 'Noto Sans CJK JP', sans-serif;
+  /* Specific stack for large Japanese glyphs. */
+  --font-jp: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif CJK JP', 'Songti SC', serif;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  /* Subtle paper texture via a light dot pattern, no external images. */
+  background-image: radial-gradient(rgba(28, 26, 23, 0.025) 1px, transparent 1px);
+  background-size: 4px 4px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--vermilion);
+}
+
+/* Visible, accessible focus on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--vermilion);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

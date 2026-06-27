@@ -1,0 +1,862 @@
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* --- Header --- */
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.5rem;
+}
+.header__title {
+  font-size: 1.5rem;
+}
+.header__title small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.header__nav {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+.header__nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.header__nav a.active {
+  color: var(--ink);
+  border-bottom-color: var(--vermilion);
+}
+
+/* --- Language selector --- */
+.lang-select {
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+/* --- Cards / panels --- */
+.panel {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.25rem;
+}
+.panel__title {
+  font-size: 1.05rem;
+  margin-bottom: 0.85rem;
+}
+.panel__hint {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.85rem;
+}
+
+/* --- Chips / toggles --- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chip {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.chip:hover {
+  border-color: var(--ink-faint);
+}
+.chip[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper-raised);
+  border-color: var(--ink);
+}
+.chip--accent[aria-pressed='true'] {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+  color: #fff;
+}
+
+.category {
+  border-top: 1px solid var(--line);
+  padding-top: 0.85rem;
+  margin-top: 0.85rem;
+}
+.category__concept {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  margin: 0.4rem 0 0;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper-raised);
+  border-radius: var(--radius);
+  padding: 0.7rem 1.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.12s ease;
+}
+.btn:hover {
+  opacity: 0.88;
+}
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn--block {
+  width: 100%;
+}
+
+/* --- Quiz --- */
+.streak {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.streak__value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--vermilion);
+  font-variant-numeric: tabular-nums;
+}
+
+.quiz {
+  text-align: center;
+}
+.quiz__prompt-glyph {
+  font-family: var(--font-jp);
+  font-size: clamp(5rem, 22vw, 9rem);
+  line-height: 1;
+  margin: 1.5rem 0;
+}
+.quiz__prompt-text {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 12vw, 4rem);
+  margin: 1.5rem 0;
+}
+.quiz__label {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.text-input {
+  width: 100%;
+  max-width: 320px;
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.choices {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.choice {
+  font-family: var(--font-jp);
+  font-size: clamp(3rem, 14vw, 5rem);
+  min-width: 7rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+.choice__glyph {
+  line-height: 1;
+}
+.choice__reading {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+.choice:hover {
+  border-color: var(--ink);
+}
+.choice:disabled {
+  cursor: default;
+  opacity: 1;
+}
+/* Post-answer feedback in choice modes (e.g. Versus). */
+.choice--correct {
+  border-color: var(--green);
+  background: rgba(79, 122, 82, 0.14);
+}
+.choice--wrong {
+  border-color: var(--vermilion);
+  background: rgba(193, 67, 46, 0.14);
+}
+
+/* --- Answer reveal --- */
+.reveal {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  text-align: left;
+}
+.reveal--correct {
+  border-color: var(--green);
+  background: rgba(79, 122, 82, 0.07);
+}
+.reveal--wrong {
+  border-color: var(--vermilion);
+  background: rgba(193, 67, 46, 0.06);
+}
+.reveal__headline {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.reveal details {
+  margin-top: 0.6rem;
+}
+.reveal summary {
+  cursor: pointer;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+.reveal__didactics {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+}
+.reveal__glyph {
+  font-family: var(--font-jp);
+  font-size: 1.5rem;
+}
+
+.notice {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 2rem 1rem;
+}
+
+/* Compact inline note (e.g. the kanji-tab English-only warning). */
+.notice--info {
+  text-align: left;
+  padding: 0.6rem 0.85rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.85rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--vermilion);
+  border-radius: var(--radius);
+}
+
+.row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.row--between {
+  justify-content: space-between;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+}
+.toggle-row + .toggle-row {
+  border-top: 1px solid var(--line);
+}
+.experimental-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--vermilion);
+  border: 1px solid var(--vermilion-soft);
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-left: 0.35rem;
+}
+
+.drawing-stub {
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 2.5rem 1rem;
+  color: var(--ink-faint);
+  max-width: 320px;
+  margin: 1rem auto;
+}
+
+/* =====================================================================
+   Browse / reference views
+   ===================================================================== */
+
+/* Landing: three large choice cards. */
+.browse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.browse-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.browse-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--vermilion);
+}
+.browse-card__glyph {
+  font-family: var(--font-jp);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--vermilion);
+}
+.browse-card__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+.browse-card__desc {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Entry point to browse from the mode picker. */
+.browse-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+/* =====================================================================
+   Kana chart
+   ===================================================================== */
+.kana-section__title {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+}
+.kana-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  overflow-x: auto;
+}
+.kana-chart__row {
+  display: flex;
+  gap: 0.4rem;
+}
+.kana-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.2rem;
+  width: 3.2rem;
+  padding: 0.4rem 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+.kana-cell--gap {
+  border-color: transparent;
+  background: transparent;
+}
+.kana-cell__glyph {
+  font-family: var(--font-jp);
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.kana-cell__romaji {
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+/* =====================================================================
+   Kanji browser
+   ===================================================================== */
+.kanji-search {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+.kanji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 0.75rem;
+}
+.kanji-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.9rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.1s ease;
+}
+.kanji-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--vermilion);
+}
+.kanji-card__glyph {
+  font-family: var(--font-jp);
+  font-size: 2.4rem;
+  line-height: 1;
+}
+.kanji-card__meaning {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.kanji-sentinel {
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  padding: 1.5rem 0;
+}
+
+/* =====================================================================
+   Modal dialog (kanji detail)
+   ===================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 23, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+  animation: fade-in 0.12s ease;
+}
+.modal {
+  position: relative;
+  width: min(440px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 40px rgba(28, 26, 23, 0.25);
+  animation: pop-in 0.14s ease;
+}
+.modal__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+.modal__close:hover {
+  color: var(--ink);
+}
+.modal__header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+.modal__glyph {
+  font-family: var(--font-jp);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--ink);
+}
+.modal__meanings {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.modal__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.fact {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+.fact__label {
+  color: var(--ink-faint);
+}
+.fact__value {
+  font-weight: 600;
+}
+.modal__readings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.reading-block {
+  display: flex;
+  gap: 0.75rem;
+}
+.reading-block__label {
+  flex: 0 0 5rem;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-top: 0.15rem;
+}
+.reading-block__value {
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+}
+.modal__section-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin: 1rem 0 0.5rem;
+}
+.example-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.example {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75rem;
+  align-items: baseline;
+}
+.example__word {
+  font-family: var(--font-jp);
+  font-size: 1.25rem;
+  grid-row: span 2;
+}
+.example__reading {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.example__meaning {
+  grid-column: 2;
+  font-size: 0.9rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+/* =====================================================================
+   Mode picker (list with descriptions)
+   ===================================================================== */
+.mode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.mode-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.mode-option:hover {
+  border-color: var(--ink-faint);
+}
+.mode-option--selected {
+  border-color: var(--vermilion);
+  background: var(--vermilion-soft);
+}
+.mode-option__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+.mode-option__desc {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* =====================================================================
+   Browse view sizing (desktop-comfortable; mobile handled later)
+   ===================================================================== */
+
+/* Let the browse pages use more horizontal space than the 720px app column. */
+.browse-view {
+  width: min(1040px, 96vw);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Bigger, comfortable kana cells laid out in horizontal rows. */
+.kana-chart {
+  gap: 0.55rem;
+}
+.kana-chart__row {
+  gap: 0.55rem;
+}
+.kana-cell {
+  min-width: 4.6rem;
+  width: 4.6rem;
+  padding: 0.6rem 0;
+}
+.kana-cell__glyph {
+  font-size: 2.2rem;
+}
+.kana-cell__romaji {
+  font-size: 0.85rem;
+}
+
+/* Bigger kanji cards. */
+.kanji-grid {
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 1rem;
+}
+.kanji-card {
+  padding: 1.2rem 0.6rem;
+  gap: 0.45rem;
+}
+.kanji-card__glyph {
+  font-size: 3.2rem;
+}
+.kanji-card__meaning {
+  font-size: 0.85rem;
+}
+
+/* Bigger browse landing cards. */
+.browse-card__glyph {
+  font-size: 4rem;
+}
+
+/* Horizontal kana chart: vowels as rows, families as columns, lateral scroll. */
+.kana-chart {
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+}
+.kana-chart__row {
+  width: max-content;
+  flex-wrap: nowrap;
+}
+.kana-cell {
+  flex: 0 0 auto;
+}
+
+/* =====================================================================
+   Phones and portrait tablets: vertical, full-width kana chart.
+   Kept in sync with VERTICAL_CHART_QUERY.
+   ===================================================================== */
+@media (max-width: 820px) {
+  /* Browse uses the full width instead of the desktop break-out. */
+  .browse-view {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+
+  /* Kana chart stays vertical (set in JS) and fills the full width: a grid of
+     five equal columns, so the cells (and glyphs) are as large as the screen
+     allows. Shorter rows (e.g. yōon) keep the same column width, left-aligned. */
+  .kana-chart {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  .kana-chart__row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .kana-cell {
+    width: auto;
+    min-width: 0;
+    padding: 0.7rem 0;
+  }
+  .kana-cell__glyph {
+    font-size: clamp(1.8rem, 7.5vw, 3.4rem);
+  }
+  .kana-cell__romaji {
+    font-size: clamp(0.65rem, 2.2vw, 0.95rem);
+  }
+}
+
+/* =====================================================================
+   Mobile layout (phones). Breakpoint kept in sync with MOBILE_QUERY.
+   ===================================================================== */
+@media (max-width: 640px) {
+  .app {
+    padding: 1rem 0.9rem 3rem;
+  }
+
+  /* Tighter panels so the chart and grids get more width. */
+  .panel {
+    padding: 1rem 0.85rem;
+  }
+
+  /* Header reflows: brand on the first row, nav + language on the second. */
+  .header {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+  .header__right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+  }
+  .header__nav {
+    gap: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  /* Browse landing cards stack into a single column. */
+  .browse-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Denser kanji grid for narrow screens. */
+  .kanji-grid {
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 0.6rem;
+  }
+  .kanji-card {
+    padding: 0.8rem 0.4rem;
+  }
+  .kanji-card__glyph {
+    font-size: 2.4rem;
+  }
+
+  /* Modal: near-full width with a little less padding. */
+  .modal {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+  .modal__header {
+    gap: 0.9rem;
+  }
+  .modal__glyph {
+    font-size: 3.6rem;
+  }
+
+  /* Versus options shrink so two fit side by side on a phone. */
+  .choice {
+    font-size: clamp(2.5rem, 18vw, 4rem);
+    min-width: 5.5rem;
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* Very narrow phones (≈320px): keep the full-width grid, just tighten spacing
+   so the glyphs get a touch more room. */
+@media (max-width: 360px) {
+  .app {
+    padding: 0.85rem 0.6rem 3rem;
+  }
+  .kana-chart__row {
+    gap: 0.3rem;
+  }
+  .kana-cell {
+    padding: 0.55rem 0;
+  }
+}
