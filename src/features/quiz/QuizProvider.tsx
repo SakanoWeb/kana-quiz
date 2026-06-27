@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- Provider and hook intentionally co-located */
 /**
  * @file Quiz context provider exposing the controller to the feature tree.
  *

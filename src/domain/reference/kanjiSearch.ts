@@ -39,7 +39,7 @@ function scoreKanji(kanji: BrowseKanji, raw: string, q: string, qRomaji: string)
   }
 
   for (const reading of [...kanji.on, ...kanji.kun]) {
-    const clean = reading.replace(/[.\-]/g, '');
+    const clean = reading.replace(/[.-]/g, '');
     if (clean === raw) best = Math.max(best, 740);
     else if (clean.includes(raw)) best = Math.max(best, 210);
     const rom = normalizeRomaji(toRomaji(clean));

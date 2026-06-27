@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- Provider and hook intentionally co-located */
 /**
  * @file React settings provider with localStorage persistence.
  *

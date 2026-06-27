@@ -120,7 +120,7 @@ export function KanaBrowse({ kind }: { kind: 'hiragana' | 'katakana' }): JSX.Ele
   const allowed = sectionsFor(kind);
   const sections = KANA_CHART.filter(
     (section) =>
-      (allowed as readonly ChartSectionId[]).includes(section.id) &&
+      allowed.includes(section.id as ChartSectionId) &&
       (showVariations || section.id === 'gojuon'),
   );
 

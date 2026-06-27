@@ -32,7 +32,7 @@ export function QuizScreen(): JSX.Element {
   // question is invalidated in the controller, so it regenerates here).
   useEffect(() => {
     if (!quiz.question && !quiz.error && quiz.poolSize > 0) quiz.next();
-  }, [quiz.question, quiz.error, quiz.poolSize, quiz.next]);
+  }, [quiz]);
 
   // Clear the remembered choice whenever a new question appears.
   useEffect(() => {

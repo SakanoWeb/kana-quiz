@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- Provider and hook intentionally co-located */
 /**
  * @file React i18n provider: current locale, `setLocale`, and a bound `t`.
  *

@@ -5,9 +5,15 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default tseslint.config(
   { ignores: ['dist', 'coverage', 'node_modules'] },
+  // Config files (vite, vitest) run in Node and are not part of the TS project;
+  // exclude them from type-aware rules to avoid "unresolved" false positives.
+  {
+    files: ['*.config.ts', '*.config.js'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommendedTypeChecked],
-    files: ['**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}', 'test/**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2022,
       parserOptions: {
