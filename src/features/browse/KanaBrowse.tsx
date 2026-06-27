@@ -118,9 +118,10 @@ export function KanaBrowse({ kind }: { kind: 'hiragana' | 'katakana' }): JSX.Ele
   const verticalChart = useMediaQuery(VERTICAL_CHART_QUERY);
 
   const allowed = sectionsFor(kind);
+  const allowedSet = new Set<ChartSectionId>(allowed);
   const sections = KANA_CHART.filter(
     (section) =>
-      allowed.includes(section.id as ChartSectionId) &&
+      allowedSet.has(section.id) &&
       (showVariations || section.id === 'gojuon'),
   );
 
