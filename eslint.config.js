@@ -38,6 +38,9 @@ export default tseslint.config(
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrors: 'none' },
       ],
+      // `t` from useI18n() is a plain function; deconstructing it from the hook
+      // object does not change its `this` binding. This rule false-positives here.
+      '@typescript-eslint/unbound-method': 'off',
     },
   },
 );
